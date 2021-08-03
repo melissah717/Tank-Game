@@ -46,6 +46,8 @@ public class GameDriver extends JPanel implements Runnable {
         this.gameObjects = new ArrayList<>();
         this.tanks = new ArrayList<>();
 
+
+
         MapLoader.gameInitialize(gameObjects, floors);
 
         Tank t1 = new Tank(120, 160, (short) 0, Resource.getResourceImage("tank1"));
@@ -151,13 +153,12 @@ public class GameDriver extends JPanel implements Runnable {
                         Math.min(tanks.get(1).getY() - GameConstants.GAME_SCREEN_HEIGHT / 2, GameConstants.GAME_WORLD_HEIGHT - GameConstants.GAME_SCREEN_HEIGHT) :
                         Math.max(tanks.get(1).getY() - (GameConstants.GAME_SCREEN_HEIGHT / 2), 0),
                 GameConstants.GAME_SCREEN_WIDTH / 2, GameConstants.GAME_SCREEN_HEIGHT);
+
+
         Image minimap = world.getSubimage(0, 0, GameConstants.GAME_WORLD_WIDTH, GameConstants.GAME_WORLD_HEIGHT).getScaledInstance(100, 100, 0);
         g2.drawImage(leftHalf, 0, 0, null);
         g2.drawImage(rightHalf, GameConstants.GAME_SCREEN_WIDTH / 2 + 5, 0, null);
         g2.drawImage(minimap, GameConstants.GAME_SCREEN_WIDTH - 200, 50, null);
 
-        BufferedImage mm = world.getSubimage(0, 0, GameConstants.GAME_WORLD_WIDTH, GameConstants.GAME_WORLD_HEIGHT);
-        g2.scale(.10, .10);
-        g2.drawImage(mm, 4450, 8220, null); // bottom screen
     }
 }
